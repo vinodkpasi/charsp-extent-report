@@ -3,6 +3,7 @@ using AventStack.ExtentReports.Model;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Reflection;
 
 namespace TestProject2.Hooks
 {
@@ -20,7 +21,10 @@ namespace TestProject2.Hooks
             if (TestContext.CurrentTestOutcome == UnitTestOutcome.Failed)
             {
                 ExtentTest.Log(Status.Fail, "Test Fail");
-                ExtentTest.Log(Status.Info, "Screenshot", new ScreenCapture(ScreenshotUtil.CaptureScreenshot(Driver,TestContext.TestName + DateTime.Now.ToString("_MMddyyyy_hhmmtt"))));
+                string assemblyPath = Assembly.GetCallingAssembly().Location;
+                string screenShotName = TestContext.TestName + DateTime.Now.ToString("_MMddyyyy_hhmmtt") + ".png";
+                string screenShotPath = assemblyPath.Substring(0, assemblyPath.LastIndexOf("bin")) + "Reports\\" + screenShotName ;
+                ExtentTest.Log(Status.Info, "Screenshot", new ScreenCapture(ScreenshotUtil.CaptureScreenshot(Driver, screenShotPath)));
             }
             if (Driver != null)
                 Driver.Quit();
