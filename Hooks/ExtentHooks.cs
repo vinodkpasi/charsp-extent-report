@@ -2,7 +2,7 @@
 using AventStack.ExtentReports.Reporter;
 using System.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
+using AventStack.ExtentReports.Reporter.Config;
 namespace TestProject2.Hooks
 {
     [TestClass]
@@ -24,7 +24,32 @@ namespace TestProject2.Hooks
             string assemblyPath = Assembly.GetCallingAssembly().Location;
             string projectRootPath = assemblyPath.Substring(0, assemblyPath.LastIndexOf("bin"));
             string reportPath = $"{projectRootPath}Reports\\Report{DateTime.Now.ToString("_MMddyyyy_hhmmtt")}.html";
-            var htmlreporter = new ExtentSparkReporter(reportPath);
+            ExtentSparkReporter htmlreporter = new ExtentSparkReporter(reportPath);
+
+
+            //Setting Theme
+            htmlreporter.Config.Theme = Theme.Dark;
+            //Setting ReportName
+            htmlreporter.Config.ReportName = "Test Report";
+            //Setting DocumentTitle
+            htmlreporter.Config.DocumentTitle = "Test Title";
+            //Setting Timeline
+            htmlreporter.Config.TimelineEnabled = false;
+            //Setting Protocol
+            htmlreporter.Config.Protocol = Protocol.HTTPS;
+            //Setting Encoding
+            htmlreporter.Config.Encoding = "UTF-8";
+            //Setting JS
+            htmlreporter.Config.JS = "";
+            //Setting CSS
+            htmlreporter.Config.CSS = "";
+            //Setting OfflineMode
+            htmlreporter.Config.OfflineMode = true;
+            
+
+            //Loading configuration using xml file
+           //  htmlreporter.LoadConfig($"{projectRootPath}extent-config.json");
+
             ExtentReports.AttachReporter(htmlreporter);
         }
 
