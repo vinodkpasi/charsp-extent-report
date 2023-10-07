@@ -16,16 +16,21 @@ namespace TestProject2.Hooks
         }
 
         [TestCleanup]
-        public void DriverTestCleanup()
+        public void ScreenCapture()
         {
             if (TestContext.CurrentTestOutcome == UnitTestOutcome.Failed)
             {
                 ExtentTest.Log(Status.Fail, "Test Fail");
                 string assemblyPath = Assembly.GetCallingAssembly().Location;
                 string screenShotName = TestContext.TestName + DateTime.Now.ToString("_MMddyyyy_hhmmtt") + ".png";
-                string screenShotPath = assemblyPath.Substring(0, assemblyPath.LastIndexOf("bin")) + "Reports\\" + screenShotName ;
+                string screenShotPath = assemblyPath.Substring(0, assemblyPath.LastIndexOf("bin")) + "Reports\\" + screenShotName;
                 ExtentTest.Log(Status.Info, "Screenshot", new ScreenCapture(ScreenshotUtil.CaptureScreenshot(Driver, screenShotPath)));
             }
+        }
+
+        [TestCleanup]
+        public void DriverCleanup()
+        {
             if (Driver != null)
                 Driver.Quit();
         }
