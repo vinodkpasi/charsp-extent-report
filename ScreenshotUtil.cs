@@ -1,5 +1,4 @@
 ﻿using OpenQA.Selenium;
-using System.Reflection;
 namespace TestProject2
 {
     public class ScreenshotUtil

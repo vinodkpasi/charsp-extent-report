@@ -16,7 +16,7 @@ namespace TestProject2.Hooks
         }
 
         [TestCleanup]
-        public void ScreenCapture()
+        public void FailedStepScreenCapture()
         {
             if (TestContext.CurrentTestOutcome == UnitTestOutcome.Failed)
             {
