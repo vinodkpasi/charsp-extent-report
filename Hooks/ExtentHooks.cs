@@ -20,6 +20,7 @@ namespace TestProject2.Hooks
             ExtentReports = new ExtentReports();
             ExtentReports.AddSystemInfo("Host Name", Environment.MachineName);
             ExtentReports.AddSystemInfo("Environment", "QA");
+            ExtentReports.AddSystemInfo("Database", "SQL");
             ExtentReports.AddSystemInfo("User Name", Environment.UserName);
             string assemblyPath = Assembly.GetCallingAssembly().Location;
             string projectRootPath = assemblyPath.Substring(0, assemblyPath.LastIndexOf("bin"));
