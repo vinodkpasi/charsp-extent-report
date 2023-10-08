@@ -47,9 +47,8 @@ namespace TestProject2.Hooks
             //Setting OfflineMode
             htmlreporter.Config.OfflineMode = true;
             
-
             //Loading configuration using xml file
-           //  htmlreporter.LoadConfig($"{projectRootPath}extent-config.json");
+            //htmlreporter.LoadConfig($"{projectRootPath}extent-config.json");
 
             ExtentReports.AttachReporter(htmlreporter);
         }
