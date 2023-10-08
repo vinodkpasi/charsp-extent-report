@@ -26,7 +26,8 @@ namespace TestProject2.Hooks
             string projectRootPath = assemblyPath.Substring(0, assemblyPath.LastIndexOf("bin"));
             string reportPath = $"{projectRootPath}Reports\\Report{DateTime.Now.ToString("_MMddyyyy_hhmmtt")}.html";
             ExtentSparkReporter htmlreporter = new ExtentSparkReporter(reportPath);
-
+            
+            //Loading configuration using properties
             //Setting Theme
             htmlreporter.Config.Theme = Theme.Dark;
             //Setting ReportName
@@ -46,10 +47,12 @@ namespace TestProject2.Hooks
             //Setting OfflineMode
             htmlreporter.Config.OfflineMode = true;
 
+            //Loading configuration using XML file
+            htmlreporter.LoadXMLConfig($"{projectRootPath}//Config//extent-config.xml");
+
             //Loading configuration using JSON file
             htmlreporter.LoadJSONConfig($"{projectRootPath}//Config//extent-config.json");
-
-
+            
             ExtentReports.AttachReporter(htmlreporter);
         }
 
