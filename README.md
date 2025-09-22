@@ -9,7 +9,6 @@ It follows the **Page Object Model (POM)** design pattern for scalability and ma
 
 ```
 UIAutomation/
-│── Drivers/           # WebDriver setup and configuration
 │── Pages/             # Page Object Model (POM) classes
 │── Tests/             # Test classes
 │── Utils/             # Helper utilities (logging, config, etc.)
