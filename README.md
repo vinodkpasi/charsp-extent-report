@@ -1,7 +1,7 @@
 # 🚀 UI Test Automation Framework (C# + Selenium + MSTest + ExtentReport)
 
 This repository contains an automated UI testing framework built with **C#**, **Selenium WebDriver**, and **MSTest**.  
-It follows the **Page Object Model (POM)** design pattern for scalability and maintainability.
+It follows the **Page Object Model (POM)** design pattern for scalability and maintainability and generate **ExtentReport**.
 
 ---
 
